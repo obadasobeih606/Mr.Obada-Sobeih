@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background: #f9f9f9;
+  color: #333;
+}
+header {
+  background: #333;
+  color: #fff;
+  padding: 1em 0;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+.nav-links li {
+  margin-left: 20px;
+}
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+#hero {
+  background: #555;
+  color: #fff;
+  padding: 80px 20px;
+  text-align: center;
+}
+#hero button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  background: #ff5e57;
+  color: white;
+  cursor: pointer;
+}
+section {
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+}
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.project-card {
+  flex: 1 1 45%;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+form input, form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+form button {
+  width: 150px;
+  padding: 10px;
+  background: #333;
+  color: white;
+  border: none;
+}
+footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+@media (max-width: 768px) {
+  .project-list {
+    flex-direction: column;
+  }
+  nav {
+    flex-direction: column;
+  }
+  .nav-links {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+}
