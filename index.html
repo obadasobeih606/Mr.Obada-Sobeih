@@ -18,11 +18,11 @@
     </nav>
   </header>
 
-  <section id="hero">
-    <h2>Hello, I'm [Obada Sobeih]</h2>
-    <p>Web Developer | Educator | Robotics Engineer | Innovator</p>
-    <button onclick="scrollToSection('projects')">See My Work</button>
-  </section>
+<section id="hero">
+  <h1>Hi, I'm <span id="typed-name"></span></h1>
+  <h3><span id="typed-title"></span></h3>
+  <p>Empowering the next generation through technology, innovation, and education.</p>
+</section>
 
 <section id="about">
   <div class="about-container">
@@ -75,5 +75,45 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+  const nameText = "Obada Sobeih";
+  const titleTexts = ["Computer Systems Engineer", "Educator", "STEAM Enthusiast"];
+  
+  let nameIndex = 0;
+  let titleIndex = 0;
+  let currentTitle = "";
+  let isDeleting = false;
+  
+  function typeEffect() {
+    const typedName = document.getElementById('typed-name');
+    const typedTitle = document.getElementById('typed-title');
+
+    // Type Name (only once)
+    if (typedName.innerHTML !== nameText) {
+      typedName.innerHTML = nameText.slice(0, nameIndex++);
+      setTimeout(typeEffect, 100);
+      return;
+    }
+
+    // Type and delete titles (loop)
+    if (!isDeleting && currentTitle.length < titleTexts[titleIndex].length) {
+      currentTitle += titleTexts[titleIndex].charAt(currentTitle.length);
+      typedTitle.innerHTML = currentTitle;
+      setTimeout(typeEffect, 150);
+    } else if (isDeleting && currentTitle.length > 0) {
+      currentTitle = currentTitle.slice(0, -1);
+      typedTitle.innerHTML = currentTitle;
+      setTimeout(typeEffect, 100);
+    } else {
+      isDeleting = !isDeleting;
+      if (!isDeleting) {
+        titleIndex = (titleIndex + 1) % titleTexts.length;
+      }
+      setTimeout(typeEffect, 800);
+    }
+  }
+
+  typeEffect();
+</script>
 </body>
 </html>
