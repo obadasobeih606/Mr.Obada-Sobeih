@@ -155,5 +155,77 @@
     navLinks.classList.toggle('show');
   });
 </script>
+  <script>
+  const lightboxOverlay = document.createElement('div');
+  lightboxOverlay.classList.add('lightbox-overlay');
+  document.body.appendChild(lightboxOverlay);
+
+  let images = document.querySelectorAll('.lightbox');
+  let currentImageIndex = 0;
+
+  lightboxOverlay.innerHTML = `
+    <span class="lightbox-close">&times;</span>
+    <span class="lightbox-prev">&#10094;</span>
+    <span class="lightbox-next">&#10095;</span>
+    <img src="" alt="Lightbox Image">
+    <div class="lightbox-caption"></div>
+  `;
+
+  const lightboxImage = lightboxOverlay.querySelector('img');
+  const lightboxCaption = lightboxOverlay.querySelector('.lightbox-caption');
+  const closeBtn = lightboxOverlay.querySelector('.lightbox-close');
+  const prevBtn = lightboxOverlay.querySelector('.lightbox-prev');
+  const nextBtn = lightboxOverlay.querySelector('.lightbox-next');
+
+  function openLightbox(index) {
+    const image = images[index];
+    lightboxImage.src = image.href;
+    lightboxCaption.textContent = image.getAttribute('data-caption');
+    lightboxOverlay.style.display = 'flex';
+    currentImageIndex = index;
+  }
+
+  images.forEach((image, index) => {
+    image.addEventListener('click', e => {
+      e.preventDefault();
+      openLightbox(index);
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightboxOverlay.style.display = 'none';
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    openLightbox(currentImageIndex);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    openLightbox(currentImageIndex);
+  });
+
+  lightboxOverlay.addEventListener('click', (e) => {
+    if (e.target === lightboxOverlay) {
+      lightboxOverlay.style.display = 'none';
+    }
+  });
+
+  // Optional: Keyboard control
+  document.addEventListener('keydown', (e) => {
+    if (lightboxOverlay.style.display === 'flex') {
+      if (e.key === 'ArrowRight') {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        openLightbox(currentImageIndex);
+      } else if (e.key === 'ArrowLeft') {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        openLightbox(currentImageIndex);
+      } else if (e.key === 'Escape') {
+        lightboxOverlay.style.display = 'none';
+      }
+    }
+  });
+</script>
 </body>
 </html>
