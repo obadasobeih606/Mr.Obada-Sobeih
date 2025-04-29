@@ -57,6 +57,10 @@ nav {
 .logo span {
   color: #ffd700; /* gold color to highlight Sobeih */
 }
+.logo-img{
+  height:50px;
+  width:auto;
+}
 /* ====== Hamburger Menu for Mobile ====== */
 .menu-toggle {
   display: none;
