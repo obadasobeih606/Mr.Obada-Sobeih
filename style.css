@@ -109,7 +109,15 @@ nav {
   text-align: center;
   padding: 0 20px;
 }
-
+.hero-impact {
+  height: 100vh;
+  background: url('images/hero-bg.jpg') center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
 .hero-content h1 {
   font-size: 48px;
   margin-bottom: 10px;
